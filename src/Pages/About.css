@@ -1,0 +1,57 @@
+/* Admin ke rich editor se aaya About content (Admin > Pages > About > Section 1/2/3) */
+.about-rich {
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #6c757d;
+}
+.about-rich > *:last-child { margin-bottom: 0; }
+.about-rich p { margin-bottom: 0.9rem; }
+.about-rich h2,
+.about-rich h3,
+.about-rich h4 {
+  font-family: "Playfair Display", serif;
+  color: #1f2a24;
+  font-weight: 700;
+  margin: 1.2rem 0 0.6rem;
+}
+.about-rich h2 { font-size: 22px; }
+.about-rich h3 { font-size: 18px; }
+.about-rich h4 { font-size: 16px; }
+.about-rich ul,
+.about-rich ol { padding-inline-start: 1.3rem; margin-bottom: 0.9rem; }
+.about-rich blockquote {
+  margin: 1rem 0;
+  padding: 0.4rem 1rem;
+  border-inline-start: 3px solid #d4a017;
+  color: #1f2a24;
+  font-style: italic;
+}
+.about-rich hr { border-color: #e4e1da; opacity: 1; }
+
+/* Values cards */
+.about-values { background: #faf8f3; }
+.about-value {
+  height: 100%;
+  background: #fff;
+  border: 1px solid #ece8dd;
+  border-top: 3px solid #d4a017;
+  border-radius: 12px;
+  padding: 26px 22px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.about-value h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2a24;
+  margin-bottom: 10px;
+}
+.about-value p {
+  font-family: Inter, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: #6c757d;
+  margin: 0;
+}

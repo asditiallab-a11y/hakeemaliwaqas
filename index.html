@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+    rel="stylesheet"
+  />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Jost:wght@400;500&family=Noto+Nastaliq+Urdu&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <title>hikmat-site</title>
+    <!-- Leaf loader ki CSS (admin wali hi) - taake JS load hone se pehle bhi leaf draw ho -->
+    <link rel="stylesheet" href="/adminPanel/components/leafLoader.css" />
+    <noscript><style>#lf-boot{display:none}</style></noscript>
+  </head>
+  <body>
+    <!-- Boot loader: React aate hi LeafLoader.jsx isi ko sambhal leta hai, aur kaam khatam hone par fade ho jata hai -->
+    <div class="lf-overlay lf-solid" id="lf-boot" role="status" aria-live="polite" aria-label="Loading">
+      <svg class="lf-svg" viewBox="0 0 24 24" aria-hidden="true">
+        <path class="lf-path" pathLength="1" d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20"></path>
+        <path class="lf-path lf-path-stem" pathLength="1" d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13"></path>
+      </svg>
+    </div>
+    <script>
+      window.__lfBootAt = performance.now();
+      // Safety: agar kisi wajah se React start na ho to loader hamesha ke liye na atka rahe
+      setTimeout(function () {
+        var b = document.getElementById("lf-boot");
+        if (b) b.remove();
+      }, 20000);
+    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

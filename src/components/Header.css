@@ -1,0 +1,386 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
+.site-header {
+  background: #0d2d1d !important;
+  width: 100%;
+  padding: 0px 75px;
+}
+
+/* ===== Top Bar ===== */
+.top-bar {
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 25px 0px;
+}
+.navbar {
+    background-color: #0d2d1d !important;
+    padding: 15px 0px !important;
+}
+
+.top-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.top-left {
+  flex: 1;
+  display: flex;
+}
+
+.top-center {
+  flex: 2;
+  text-align: center;
+}
+
+.top-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Consultation Button */
+.consultation-btn {
+  background: #d9a820;
+  padding: 14px 14px;
+  font-size: 10px;
+  font-weight: 900;
+  color: #1a1a1a;
+  border: none;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  transition: 0.3s ease;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  white-space: nowrap;
+}
+
+.consultation-btn:hover {
+  background-color: #d4a91e;
+}
+
+.navbar-expand-lg .navbar-collapse {
+  display: flex;
+  justify-content: center;
+}
+
+/* Logo Section */
+.logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.leaf-icon {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  position: absolute;
+  left: 85px;
+  color: #d9a820;
+  top: 1px;
+}
+
+.site-title {
+  color: #f5f0e1;
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: 24px;
+  margin: 0;
+}
+
+.tagline {
+  color: #e8b923d6;
+  font-size: 9px;
+  letter-spacing: 3px;
+  font-weight: 400;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+.diamond {
+  font-size: 0.7rem;
+  vertical-align: middle;
+}
+
+/* Search Button */
+.search-btn {
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  color: #e8b923;
+  width: 45px;
+  height: 45px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+}
+
+.search-btn:hover {
+  background-color: rgba(232, 185, 35, 0.1);
+}
+
+/* ===== Navbar ===== */
+.nav-bar {
+  background-color: #0d2818;
+  padding: 0;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu .nav-item {
+    display: flex;
+    align-items: center;
+    padding: 0px 8px;
+}
+/* Link ke gird chhota border box - sirf active/hover pe dikhega */
+.nav-menu .nav-link {
+  color: #f5f0e1;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: 0.3s ease;
+  padding: 8px 14px !important;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  display: inline-block;
+}
+.consultation-btn{
+    background: #d9a820;
+    font-size: 10px;
+    font-weight: 900;
+    padding: 14px;
+}
+.nav-menu .nav-link:hover {
+  color: #e8b923;
+  border: 1px solid rgba(232, 185, 35, 0.5);
+}
+
+.nav-item.active .nav-link {
+    color: hsl(43, 80%, 62%) !important;
+    border: 1px solid rgb(232 185 35 / 39%);
+    position: relative;
+}
+
+/* Neeche wali gold underline sirf active item pe */
+.nav-item.active .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 17px;
+    right: 17px;
+    bottom: -1px;
+    height: 1px;
+    background-color: #e8b923;
+}
+/* Separator - chhota "+" jaisa, inline, baseline pe */
+.nav-separator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 6px;
+  font-size: 11px;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.35);
+  font-weight: 400;
+}
+
+.nav-separator::before {
+  content: "+";
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 991px) {
+  .top-bar-inner {
+    justify-content: center;
+    text-align: center;
+  }
+  .top-left,
+  .top-right {
+    justify-content: center;
+    flex: unset;
+    width: 100%;
+  }
+  .top-center {
+    order: -1;
+    flex: unset;
+    width: 100%;
+  }
+  .site-title {
+    font-size: 1.5rem;
+  }
+  .nav-menu {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  .nav-separator {
+    display: none;
+  }
+  .nav-item.active .nav-link::after {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .site-title {
+    font-size: 1.2rem;
+  }
+  .tagline {
+    font-size: 0.65rem;
+  }
+  .consultation-btn {
+    font-size: 11px;
+    padding: 8px 12px;
+  }
+}
+/* ===== Sticky compact navbar (scroll par) ===== */
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(10, 36, 23, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(212, 160, 23, 0.35);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+  transform: translateY(-105%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease, visibility 0s linear 0.45s;
+  will-change: transform;
+}
+.sticky-nav.show {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease, visibility 0s;
+}
+.sticky-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 12px;
+  height: 64px;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+.sticky-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  padding-right: 32px;
+  flex-shrink: 0;
+}
+.sticky-logo img { width: 30px; height: 30px; }
+.sticky-logo strong {
+  display: block;
+  font-family: "Playfair Display", serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #f5f0e1;
+  white-space: nowrap;
+}
+.sticky-logo small {
+  display: block;
+  font-size: 8.5px;
+  letter-spacing: 2.4px;
+  color: #d9a820;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+.sticky-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0 14px;
+  display: flex;
+  align-items: stretch;
+  border-left: 1px solid rgba(212, 160, 23, 0.25);
+}
+.sticky-menu li { display: flex; }
+.sticky-menu a {
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: #e8b923;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.25s, color 0.25s;
+}
+.sticky-menu a:hover { background: rgba(232, 185, 35, 0.1); color: #fff3c4; }
+.sticky-menu li.active a { background: rgba(232, 185, 35, 0.14); }
+.sticky-actions {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  padding-left: 22px;
+  border-left: 1px solid rgba(212, 160, 23, 0.25);
+}
+.sticky-icon-btn {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  color: #e8b923;
+  font-size: 15px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+.sticky-icon-btn:hover { background: rgba(232, 185, 35, 0.12); }
+.sticky-burger { display: none; }
+
+/* Tablet / mobile: logo + search + hamburger, menu dropdown */
+@media (max-width: 1099px) {
+  .sticky-logo { padding-right: 0; }
+  .sticky-actions { border-left: 0; padding-left: 0; }
+  .sticky-burger { display: inline-flex; }
+  .sticky-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    padding: 8px 0;
+    border-left: 0;
+    background: rgba(10, 36, 23, 0.98);
+    border-bottom: 1px solid rgba(212, 160, 23, 0.35);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: max-height 0.35s ease, opacity 0.25s ease, padding 0.35s ease;
+  }
+  .sticky-menu.open { max-height: 460px; opacity: 1; padding: 8px 0; }
+  .sticky-menu a { padding: 14px 24px; font-size: 12px; }
+}
+@media (max-width: 480px) {
+  .sticky-logo small { display: none; }
+  .sticky-logo strong { font-size: 15px; }
+}

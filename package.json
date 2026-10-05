@@ -1,0 +1,49 @@
+{
+  "name": "hikmat-site",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -n web,api -c cyan,green \"vite\" \"node --watch server/index.js\"",
+    "dev:web": "vite",
+    "dev:api": "node --watch server/index.js",
+    "server": "node server/index.js",
+    "start": "node server/index.js",
+    "build": "vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "reset-admin": "node server/scripts/reset-admin.js",
+    "seed": "node server/scripts/seed.js"
+  },
+  "dependencies": {
+    "aos": "^2.3.4",
+    "archiver": "^8.0.0",
+    "bootstrap": "^5.3.8",
+    "dotenv": "^18.0.5",
+    "express": "^5.2.1",
+    "framer-motion": "^13.4.4",
+    "jsonwebtoken": "^9.0.3",
+    "lucide-react": "^1.48.0",
+    "mongoose": "^9.10.3",
+    "multer": "^2.4.0",
+    "react": "^19.2.8",
+    "react-bootstrap": "^2.10.10",
+    "react-dom": "^19.2.8",
+    "react-icons": "^5.7.0",
+    "react-router-dom": "^7.18.4",
+    "sanitize-html": "^2.18.0",
+    "swiper": "^14.2.0",
+    "yauzl": "^3.4.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "concurrently": "^10.0.5",
+    "oxlint": "^1.81.0",
+    "vite": "^8.3.0"
+  },
+  "engines": {
+    "node": ">=20.19"
+  }
+}

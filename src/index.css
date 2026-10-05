@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+}
+
+/* ===== About page timeline ===== */
+.tl { position: relative; max-width: 900px; margin: 0 auto; }
+.tl::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: #d9d6cd; }
+.tl-item { position: relative; width: 50%; padding: 0 34px 60px 0; text-align: right; }
+.tl-item.right { margin-left: 50%; padding: 0 0 60px 34px; text-align: left; }
+.tl-item::after { content: ""; position: absolute; top: 24px; right: -5px; width: 10px; height: 10px; border-radius: 50%; background: #d4a017; box-shadow: 0 0 0 4px #f6ecd0; }
+.tl-item.right::after { right: auto; left: -5px; }
+@media (max-width: 575px) {
+  .tl::before { left: 5px; }
+  .tl-item, .tl-item.right { width: 100%; margin-left: 0; padding: 0 0 40px 30px; text-align: left; }
+  .tl-item::after, .tl-item.right::after { left: 0; right: auto; }
+}
+
+/* ===== CTA banner - parallax ===== */
+.cta-parallax {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* scroll par image apni jagah fix rehti hai */
+  overflow: hidden;
+}
+/* Mobile/touch devices par fixed background kaam nahi karta, isliye normal */
+@media (hover: none), (max-width: 991px) {
+  .cta-parallax { background-attachment: scroll; }
+}
+
+/* ===== Page banners (HeroSection) - height sab pages par ek jaisi ===== */
+.hero-banner { min-height: var(--hero-h, 620px); }
+@media (max-width: 768px) { .hero-banner { min-height: min(var(--hero-h, 620px), 460px); } }
