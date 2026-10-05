@@ -177,7 +177,18 @@ app.post("/api/consultations", upload.single("report"), async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 });
-
+// ---- frontend (Vite build) serve karo ----
+const DIST_DIR = path.join(__dirname, "..", "dist");
+if (fs.existsSync(DIST_DIR)) {
+  app.use(express.static(DIST_DIR, { index: false, maxAge: "1h" }));
+  // React Router ke pages (refresh par bhi chalein): /api ke ilawa har GET par index.html
+  app.use((req, res, next) => {
+    if (req.method !== "GET" || req.path.startsWith("/api")) return next();
+    res.sendFile(path.join(DIST_DIR, "index.html"));
+  });
+} else {
+  console.warn("[server] dist/ folder nahi mila. Build chala hi nahi (npm run build).");
+}
 // ---- errors (multer wagaira) ----
 app.use((err, _req, res, _next) => {
   if (err.message === "ONLY_PDF") return res.status(400).json({ error: "Only PDF files are allowed" });
