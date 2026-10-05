@@ -17,6 +17,9 @@ const links = [
   { to: "/contact", label: "CONTACT" },
 ];
 
+// Is width se chhoti screen par compact bar hamesha dikhega (CSS ke 991px se match)
+const MOBILE_QUERY = "(max-width: 991px)";
+
 function Header() {
   const { pathname } = useLocation();
   const { openModal } = useConsultation();
@@ -25,6 +28,18 @@ function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== "undefined" && window.matchMedia(MOBILE_QUERY).matches
+  );
+
+  // Mobile / desktop track karo
+  useEffect(() => {
+    const mq = window.matchMedia(MOBILE_QUERY);
+    const onChange = (e) => setIsMobile(e.matches);
+    setIsMobile(mq.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
 
   // Scroll par compact sticky navbar dikhao (200px se neeche jaye to show)
   useEffect(() => {
@@ -45,6 +60,9 @@ function Header() {
   // Page badalne par mobile menu band
   useEffect(() => setMenuOpen(false), [pathname]);
 
+  // Desktop par jaane se menu band
+  useEffect(() => { if (!isMobile && !scrolled) setMenuOpen(false); }, [isMobile, scrolled]);
+
   // Ctrl+K (ya Cmd+K) se search khule
   useEffect(() => {
     const onKey = (e) => {
@@ -56,6 +74,9 @@ function Header() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
+  // Mobile par bar hamesha visible, desktop par sirf scroll ke baad
+  const barVisible = scrolled || isMobile;
 
   return (
     <header className="site-header">
@@ -115,10 +136,10 @@ function Header() {
         </div>
       </nav>
 
-      {/* Compact sticky navbar - scroll karne par smoothly neeche aata hai */}
-      <div className={`sticky-nav ${scrolled ? "show" : ""}`} aria-hidden={!scrolled}>
+      {/* Compact sticky navbar - desktop par scroll ke baad, mobile par hamesha */}
+      <div className={`sticky-nav ${barVisible ? "show" : ""}`} aria-hidden={!barVisible}>
         <div className="sticky-inner">
-          <Link to="/" className="sticky-logo" tabIndex={scrolled ? 0 : -1}>
+          <Link to="/" className="sticky-logo" tabIndex={barVisible ? 0 : -1}>
             <img src="/images/leaf.svg" alt="" />
             <span>
               <strong>Prof Hakeem Ali Waqas</strong>
@@ -129,9 +150,19 @@ function Header() {
           <ul className={`sticky-menu ${menuOpen ? "open" : ""}`}>
             {links.map((l) => (
               <li key={l.to} className={(pathname === l.to || (l.to !== "/" && pathname.startsWith(l.to + "/"))) ? "active" : ""}>
-                <Link to={l.to} tabIndex={scrolled ? 0 : -1}>{l.label}</Link>
+                <Link to={l.to} tabIndex={barVisible ? 0 : -1}>{l.label}</Link>
               </li>
             ))}
+            {/* Mobile menu ke andar Consultation button (desktop par CSS se hidden) */}
+            <li className="sticky-cta">
+              <button
+                type="button"
+                tabIndex={barVisible ? 0 : -1}
+                onClick={() => { setMenuOpen(false); openForm(); }}
+              >
+                <FaUserFriends /> CONSULTATION FORM
+              </button>
+            </li>
           </ul>
 
           <div className="sticky-actions">
@@ -139,7 +170,7 @@ function Header() {
               className="sticky-icon-btn"
               onClick={() => setSearchOpen(true)}
               aria-label="Search"
-              tabIndex={scrolled ? 0 : -1}
+              tabIndex={barVisible ? 0 : -1}
             >
               <FaSearch />
             </button>
@@ -147,7 +178,8 @@ function Header() {
               className="sticky-icon-btn sticky-burger"
               onClick={() => setMenuOpen((o) => !o)}
               aria-label="Menu"
-              tabIndex={scrolled ? 0 : -1}
+              aria-expanded={menuOpen}
+              tabIndex={barVisible ? 0 : -1}
             >
               {menuOpen ? <FaTimes /> : <FaBars />}
             </button>
