@@ -79,7 +79,10 @@ function Header() {
   const barVisible = scrolled || isMobile;
 
   return (
-    <header className="site-header">
+    <header className={`site-header ${isMobile ? "is-mobile" : ""}`}>
+      {/* Mobile par bada header (top bar + navbar) render hi nahi hota */}
+      {!isMobile && (
+      <>
       {/* Top Bar */}
       <div className="top-bar">
         <div className="top-bar-inner">
@@ -135,6 +138,8 @@ function Header() {
           </div>
         </div>
       </nav>
+      </>
+      )}
 
       {/* Compact sticky navbar - desktop par scroll ke baad, mobile par hamesha */}
       <div className={`sticky-nav ${barVisible ? "show" : ""}`} aria-hidden={!barVisible}>
