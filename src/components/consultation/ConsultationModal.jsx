@@ -23,7 +23,7 @@ export default function ConsultationModal() {
   if (!modalOpen) return null;
 
   return createPortal(
-    <div className="cf-overlay" onMouseDown={(e) => e.target === e.currentTarget && closeModal()} role="dialog" aria-modal="true">
+    <div className="cf-overlay" role="dialog" aria-modal="true">
       <ConsultationForm variant="modal" onClose={closeModal} />
     </div>,
     document.body
