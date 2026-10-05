@@ -384,3 +384,120 @@
   .sticky-logo small { display: none; }
   .sticky-logo strong { font-size: 15px; }
 }
+
+/* =====================================================
+   MOBILE NAVBAR - Header.css ke bilkul END mein paste karein
+   (purana koi CSS delete / change nahi karna)
+   ===================================================== */
+
+/* Consultation button desktop sticky menu mein nahi dikhega */
+.sticky-menu li.sticky-cta { display: none; }
+
+/* Tablet + mobile: menu dropdown ke andar Consultation button */
+@media (max-width: 1099px) {
+  .sticky-menu li.sticky-cta {
+    display: block;
+    padding: 14px 20px 18px;
+  }
+  .sticky-cta button {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #d9a820;
+    color: #1a1a1a;
+    border: 0;
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    cursor: pointer;
+  }
+  /* Choti screen par menu lamba ho to scroll ho */
+  .sticky-menu.open {
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+  }
+}
+
+/* Mobile: compact bar hamesha top par (safed, reference jaisa) */
+@media (max-width: 991px) {
+  /* Purana top bar aur navbar chhupao */
+  .top-bar,
+  .nav-bar { display: none !important; }
+
+  /* Fixed bar ke liye 64px jagah */
+  .site-header {
+    padding: 0;
+    height: 64px;
+    background: #fff !important;
+  }
+
+  .sticky-nav {
+    background: rgba(255, 255, 255, 0.97);
+    border-bottom: 1px solid #e1e5d3;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.08);
+  }
+  .sticky-inner { padding: 0 14px; }
+
+  /* Logo + naam + tagline */
+  .sticky-logo { gap: 8px; min-width: 0; }
+  .sticky-logo img { width: 28px; height: 28px; }
+  .sticky-logo strong { color: #1b3a28; font-size: 14px; }
+  .sticky-logo small {
+    display: block;
+    font-size: 7px;
+    letter-spacing: 1.6px;
+    color: #c99a14;
+  }
+
+  /* Search + hamburger */
+  .sticky-actions { gap: 6px; }
+  .sticky-icon-btn { color: #1b3a28; }
+  .sticky-icon-btn:hover { background: rgba(27, 58, 40, 0.08); }
+  .sticky-burger {
+    width: 38px;
+    height: 38px;
+    border: 1px solid #d3dcc2;
+    border-radius: 8px;
+  }
+
+  /* Dropdown menu - safed, chhote links, divider lines */
+  .sticky-menu {
+    background: #fff;
+    border-bottom: 1px solid #e1e5d3;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+  }
+  .sticky-menu li {
+    display: block;
+    margin: 0 20px;
+    border-bottom: 1px solid #eceee3;
+  }
+  .sticky-menu li.sticky-cta {
+    margin: 0;
+    border-bottom: 0;
+  }
+  .sticky-menu a {
+    display: block;
+    padding: 14px 0;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #1b3a28;
+  }
+  .sticky-menu a:hover {
+    background: transparent;
+    color: #d9a820;
+  }
+  .sticky-menu li.active a {
+    background: transparent;
+    color: #d9a820;
+  }
+}
+
+@media (max-width: 360px) {
+  .sticky-logo strong { font-size: 13px; }
+  .sticky-logo small { letter-spacing: 1.2px; }
+}
