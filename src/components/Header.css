@@ -5,6 +5,23 @@
   width: 100%;
   padding: 0px 75px;
 }
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 7px;                 /* total height: 3px white + 4px green */
+  background: linear-gradient(
+    to bottom,
+    #ffffff 0,
+    #ffffff 3px,               /* white line */
+    #1f7a4d 3px,
+    #1f7a4d 7px                /* green line */
+  );
+  pointer-events: none;
+  z-index: 2;
+}
 
 /* ===== Top Bar ===== */
 .top-bar {
