@@ -110,9 +110,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 260px; /* button ki width: chhoti/barhi karni ho to ye badlen */
+    max-width: 100%;
     min-height: 84px;
-    padding: 32px;
+    padding: 32px 20px;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.3px;
@@ -163,8 +164,10 @@
   }
 
   .hero-btn {
+    width: 240px;
     min-height: 68px;
     font-size: 15px;
+    margin: 0 auto;
   }
 }
 
@@ -245,9 +248,9 @@
 }
 
 /* ---------- Grid gutters (26px) ---------- */
-.fp-row {
+.row.fp-row {
   --bs-gutter-x: 26px;
-  --bs-gutter-y: 26px;
+  --bs-gutter-y: 26px; /* cards ke darmiyan vertical gap (Bootstrap ke .row se zyada specificity, warna 0 ho jata tha) */
 }
 
 /* ---------- Card ---------- */
@@ -264,7 +267,7 @@
 
 .fp-img {
   width: 100%;
-  height: 220px;
+  height: 170px;
   overflow: hidden;
   background: #e9e6df;
 }

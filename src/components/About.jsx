@@ -21,7 +21,7 @@ const About = ({ page }) => {
       <div className="container">
         <div className="row g-4 justify-content-center">
           {buttons.map((btn, i) => (
-            <div className="col-12 col-md-4" key={i}>
+            <div className="col-12 col-md-auto" key={i}>
               <Link to={btn.href} className={`hero-btn ${btn.active ? "active" : ""}`}>
                 {btn.label}
               </Link>

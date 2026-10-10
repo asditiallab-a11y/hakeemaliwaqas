@@ -59,6 +59,8 @@ export const Article = make("Article", {
   content: { type: String, maxlength: 150000 },
   contentUr: { type: String, maxlength: 150000 },
   image: { type: String, maxlength: 300 },
+  // Auto English->Urdu translation ka cache (server/translate.js). Admin ke apne Urdu fields hamesha pehle aate hain.
+  autoUr: { type: mongoose.Schema.Types.Mixed },
 });
 
 export const Testimonial = make("Testimonial", {

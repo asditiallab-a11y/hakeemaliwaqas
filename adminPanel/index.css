@@ -513,7 +513,7 @@
 .admin-root .im-head { display: flex; align-items: center; justify-content: space-between; }
 .admin-root .im-x { background: none; border: 0; color: #6b6f68; display: grid; padding: 4px; border-radius: 6px; }
 .admin-root .im-x:hover { background: #0000000d; color: var(--ink); }
-.admin-root .im-tabs { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.admin-root .im-tabs { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: 8px;}
 .admin-root .im-tab { border: 0; background: #fff; padding: 9px; font-size: 13px; font-weight: 600; color: #4b524c; }
 .admin-root .im-tab.on { background: #d4a017; color: #fff; }
 .admin-root .im-field { display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 600; }

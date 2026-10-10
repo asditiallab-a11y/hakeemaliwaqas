@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-route
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import SocialSidebar from "./components/SocialSidebar";
+import FloatingContact from "./components/FloatingContact";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Treatments from "./Pages/Treatments";
@@ -76,6 +77,7 @@ function SiteRoutes() {
       <RouteLoader />
       <Header />
       <SocialSidebar />
+      <FloatingContact />
 
       <Routes>
         <Route path="/" element={<Home />} />

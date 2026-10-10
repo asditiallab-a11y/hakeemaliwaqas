@@ -40,7 +40,7 @@ export default function Videos() {
           link: val(page, "subscribeLink"),
         }}
         isSubscriber={val(page, "videoLock", "on") === "off"}
-        defaultTab={val(page, "defaultTab", "short")}
+        defaultTab="long"
         lockTitle={field(page, "lockTitle", "Subscribe to Watch")}
         lockSub={field(page, "lockSub", "یہ ویڈیو دیکھنے کے لیے Subscribe کریں")}
       />

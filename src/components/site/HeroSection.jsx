@@ -19,14 +19,15 @@ export default function HeroSection({
   return (
     <section
       className="hero-banner position-relative d-flex align-items-center justify-content-center text-center overflow-hidden border-top border-3"
-      style={{
-        "--hero-h": height,
-        backgroundColor: "#0d1410",
-        backgroundImage: image ? `url(${image})` : "none",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        borderColor: "#b8892b",
-      }}
+     style={{
+  "--hero-h": height,
+  backgroundColor: "#0d1410",
+  backgroundImage: image ? `url("${String(image).replace(/"/g, "%22")}")` : "none",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  borderColor: "#b8892b",
+  paddingTop: "300px",
+}}
     >
       {video && (
         <video

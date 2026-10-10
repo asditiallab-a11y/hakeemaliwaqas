@@ -1,3 +1,4 @@
+import { buyUrl } from "../../lib/whatsapp";
 import { Link } from "react-router-dom";
 const GOLD = "#d4a017";
 
@@ -13,9 +14,7 @@ function CartIcon() {
 }
 
 export default function ProductCard({ product, whatsappNumber }) {
-  const buyLink = whatsappNumber
-    ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`I want to buy ${product.name}`)}`
-    : "#";
+  const buyLink = buyUrl(whatsappNumber, { name: product.name, price: product.price });
 
   return (
     <div
@@ -23,7 +22,7 @@ export default function ProductCard({ product, whatsappNumber }) {
       style={{ background: "#f5f4f1", border: "1px solid #e4e1da" }}
     >
       {/* Image */}
-      <div style={{ height: 192, background: "#e9e4d8" }}>
+      <div style={{ height: 170, background: "#e9e4d8" }}>
         {product.image && (
           <img
             src={product.image}

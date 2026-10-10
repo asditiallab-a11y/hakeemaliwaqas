@@ -347,7 +347,6 @@ export const TABS = [
         title: "Video Access (Subscribers Notice)",
         fields: [
           { k: "videoLock", label: "Videos Access", w: "half", type: "select", options: [["on", "Locked — Subscribers only (video play nahi hogi)"], ["off", "Open — sab visitors video dekh sakte hain"]], d: "on" },
-          { k: "defaultTab", label: "Default Tab (page khulne par)", w: "half", type: "select", options: [["short", "Short Videos"], ["long", "Long Videos"]], d: "short" },
           { k: "noticeText", label: "Notice Text (khali = notice hide)", d: "Videos صرف Subscribers کے لیے ہیں" },
           { k: "noticeBtn", label: "Notice Button Text", w: "half", d: "Subscribe" },
           { k: "subscribeLink", label: "Subscribe Link (https://... ya /contact)", w: "half", placeholder: "https://www.youtube.com/@yourchannel", d: "" },

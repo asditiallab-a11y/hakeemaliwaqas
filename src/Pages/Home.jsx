@@ -43,7 +43,7 @@ const Home = () => {
         title={page && (page.teHeading || undefined)}
         subtitle={page && (page.teDesc || undefined)}
       />
-      <VideoTestimonials viewAllLink="/testimonials" items={live ? data.reviewVideos : undefined} />
+      <VideoTestimonials slider viewAllLink="/testimonials" items={live ? data.reviewVideos : undefined} />
       <CtaBanner
         title={page?.ctaHeading || undefined}
         text={page?.ctaText || undefined}

@@ -1,3 +1,4 @@
+import { buyUrl } from '../lib/whatsapp'
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { val } from '../lib/siteApi';
@@ -92,12 +93,10 @@ const CartIcon = () => (
 )
 
 // Buy Now: WhatsApp number (Admin > Settings) ho to wahan order message, warna Herbal Medicines page
-const buyLink = (title, whatsapp) => {
-  const num = String(whatsapp || '').replace(/\D/g, '')
-  return num
-    ? { href: `https://wa.me/${num}?text=${encodeURIComponent(`I want to order: ${title}`)}`, external: true }
-    : { href: '/herbal-medicines', external: false }
-}
+const buyLink = (title, whatsapp, price) => ({
+  href: buyUrl(whatsapp, { name: title, price }),
+  external: true,
+})
 
 // Card ki width: har 4 ka group; aakhri group (1-3 cards) poori row bhar deta hai
 const colClass = (index, total) => {
@@ -109,7 +108,7 @@ const colClass = (index, total) => {
 // Admin > Pages > Home > "Products Section Header"; cards = Medicines jin par "Show on Home Page" on hai
 const FeaturedProducts = ({ page, medicines, whatsapp }) => {
   const items = medicines
-    ? medicines.map((m) => ({ id: m.id, title: m.title, text: m.description, image: m.image }))
+    ? medicines.map((m) => ({ id: m.id, title: m.title, text: m.description, image: m.image, price: m.price }))
     : products
   if (!items.length) return null
   const badge = val(page, 'prodBadge', '100% Natural')
@@ -146,7 +145,7 @@ const FeaturedProducts = ({ page, medicines, whatsapp }) => {
                   </div>
 
                   {(() => {
-                    const b = buyLink(item.title, whatsapp)
+                    const b = buyLink(item.title, whatsapp, item.price)
                     const inner = (
                       <>
                         <CartIcon />

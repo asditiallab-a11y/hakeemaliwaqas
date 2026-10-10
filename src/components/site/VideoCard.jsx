@@ -20,7 +20,7 @@ const PlayIcon = () => (
 
 // locked=true  -> "Subscribe to Watch" overlay.   locked=false -> poori thumbnail + play button (onPlay se player khulta hai)
 export default function VideoCard({
-  video, isShort, locked = true, index = 0, onPlay,
+  video, isShort, locked = true, index = 0, onPlay, onLockedClick,
   lockTitle = "Subscribe to Watch", lockSub = "یہ ویڈیو دیکھنے کے لیے Subscribe کریں",
 }) {
   const p1 = PALETTES[index % PALETTES.length];
@@ -33,10 +33,22 @@ export default function VideoCard({
   return (
     <div
       className="h-100 rounded-2 overflow-hidden"
-      style={{ background: "#f5f4f1", border: "1px solid #e4e1da" }}
+      style={{ background: "#f5f4f1", border: "1px solid #e4e1da", cursor: locked && onLockedClick ? "pointer" : undefined }}
+      {...(locked && onLockedClick
+        ? {
+            role: "button",
+            tabIndex: 0,
+            "aria-label": `${video.title} — ${lockTitle}`,
+            onClick: () => onLockedClick(video),
+            onKeyDown: (e) => {
+              if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onLockedClick(video); }
+            },
+          }
+        : {})}
     >
       {/* Video area */}
-      <div className={`ratio ${isShort ? "ratio-9x16" : "ratio-16x9"} bg-black`}>
+      {/* Long = 16:9. Short = thora lamba (4:5). Height badhani/ghatani ho to neeche "125%" badlen (56.25% = 16:9, 100% = square, 177% = 9:16) */}
+      <div className="ratio bg-black" style={{ "--bs-aspect-ratio": isShort ? "125%" : "56.25%" }}>
         <div>
           {!locked && thumb ? (
             <img src={thumb} alt="" className="position-absolute top-0 start-0 w-100 h-100" style={{ objectFit: "cover" }} loading="lazy" />

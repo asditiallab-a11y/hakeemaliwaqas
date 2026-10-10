@@ -11,7 +11,7 @@ import { adminStore } from "./adminStore.js";
 import { createAuth, ensureAdmin } from "./auth.js";
 import adminRoutes from "./routes/admin.js";
 import publicRoutes from "./routes/public.js";
-import { Appointment, Medicine, Order } from "./models/content.js";
+import { Appointment, Medicine, Order, ReviewVideo, Setting } from "./models/content.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = process.env.DATA_DIR || __dirname; // Railway par Volume ka mount path (media + uploads yahin rahengi)
@@ -212,5 +212,29 @@ async function start() {
   } catch (err) {
     console.error("[admin] admin banane mein masla:", err.message);
   }
+  try {
+    await seedReviewVideosOnce();
+  } catch (err) {
+    console.error("[review-videos] starter videos daalne mein masla:", err.message);
+  }
+}
+
+// Home page ka "Video Reviews" slider Admin > Review Videos se chalta hai. Naye/khali database mein slider khali
+// na dikhe, is liye pehli baar sirf 5 starter videos daal di jati hain. Uske baad admin jo karega wahi chalega:
+// saari videos delete bhi kar do to dobara wapas nahi aayengi (marker "seed.reviewVideos" save ho jata hai).
+const STARTER_REVIEW_VIDEOS = [
+  ["M Hafeez", "https://youtube.com/shorts/53rV7CXvzeE?feature=share", "Stomach Ulcer Treatment ! معدے کے السر کا علاج"],
+  ["Female Patient From Narang Mandi", "https://youtube.com/shorts/u8VM7xsPUOA", ""],
+  ["Malik Sultan Car Driver", "https://youtube.com/shorts/ZyF62IIjqr8?feature=share", ""],
+  ["Arif From Feroze Wattwan", "https://youtube.com/shorts/UH8fAj8ZdgA?feature=share", ""],
+  ["Attique Ahmad", "https://youtube.com/shorts/znjIplqox98", ""],
+];
+async function seedReviewVideosOnce() {
+  if (await Setting.findOne({ key: "seed.reviewVideos" })) return;
+  if ((await ReviewVideo.countDocuments()) === 0) {
+    await ReviewVideo.insertMany(STARTER_REVIEW_VIDEOS.map(([name, url, title], i) => ({ name, url, title, sortOrder: i })));
+    console.log("[review-videos] 5 starter videos add ho gayi (Admin > Review Videos se badal sakte ho)");
+  }
+  await Setting.create({ key: "seed.reviewVideos", value: true });
 }
 start();

@@ -1,0 +1,29 @@
+/* Article detail page: back link, language toggle, excerpt quote aur article ka content */
+.ad-back { font: 13px Inter, sans-serif; color: #6c757d; text-decoration: none; }
+.ad-back:hover { color: #d4a017; }
+
+.ad-lang { display: inline-flex; border: 1px solid #e4e1da; border-radius: 10px; background: #f5f4f1; padding: 3px; margin-top: 18px; }
+.ad-lang button { display: inline-flex; align-items: center; gap: 8px; border: 0; background: none; padding: 7px 14px; border-radius: 8px; font: 500 12px Inter, sans-serif; color: #4a4f57; cursor: pointer; }
+.ad-lang button i { font: 600 9px Inter, sans-serif; letter-spacing: 1px; color: #8a8f98; font-style: normal; }
+.ad-lang button.on { background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.12); color: #1f2a24; }
+.ad-lang button.on i { color: #d4a017; }
+
+.ad-quote { margin: 24px 0 8px; padding: 6px 0 6px 18px; border-inline-start: 3px solid #e4e1da; font: italic 15px/1.8 Inter, sans-serif; color: #6c757d; }
+
+/* Content (admin editor ka HTML): headings sans-serif bold, gold bullets */
+.ad-rich { font-family: Inter, sans-serif; font-size: 15px; line-height: 1.85; color: #5b6168; }
+.ad-rich > *:last-child { margin-bottom: 0; }
+.ad-rich p { margin: 0 0 1rem; }
+.ad-rich h1, .ad-rich h2, .ad-rich h3, .ad-rich h4 { font-family: Inter, sans-serif; font-weight: 700; color: #1f2a24; line-height: 1.35; margin: 2rem 0 .8rem; }
+.ad-rich h1 { font-size: 26px; }
+.ad-rich h2 { font-size: 22px; }
+.ad-rich h3 { font-size: 19px; }
+.ad-rich h4 { font-size: 16px; }
+.ad-rich strong, .ad-rich b { color: #1f2a24; font-weight: 600; }
+.ad-rich ul, .ad-rich ol { padding-inline-start: 1.6rem; margin: 0 0 1rem; }
+.ad-rich li { margin-bottom: .55rem; padding-inline-start: .3rem; }
+.ad-rich li::marker { color: #d4a017; }
+.ad-rich a { color: #b8892b; }
+.ad-rich blockquote { margin: 1.2rem 0; padding: .3rem 0 .3rem 1.1rem; border-inline-start: 3px solid #e4e1da; font-style: italic; color: #6c757d; }
+.ad-rich hr { border-color: #e4e1da; opacity: 1; }
+.ad-rich img { max-width: 100%; height: auto; border-radius: 8px; }

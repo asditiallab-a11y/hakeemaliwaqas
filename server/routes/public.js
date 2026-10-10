@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import sanitizeHtml from "sanitize-html";
 import Category from "../models/Category.js";
+import { translateEnabled, translateArticleToUrdu, sourceHash } from "../translate.js";
 import { Article, Treatment, Medicine, Testimonial, Video, ReviewVideo, Setting, PageContent } from "../models/content.js";
 
 // Website (visitors) ke liye PUBLIC read-only routes - login nahi chahiye.
@@ -300,8 +301,55 @@ router.get("/articles/:id", async (req, res, next) => {
         ...artCard(a),
         html: sanitizeHtml(a.content || "", ARTICLE_HTML),
         htmlUr: sanitizeHtml(a.contentUr || "", ARTICLE_HTML),
+        // Admin ne Urdu nahi likha aur translation on hai => website "اردو" tab par auto-translation la sakti hai
+        autoUrdu: translateEnabled && !(a.titleUr || a.excerptUr || a.contentUr) && !!(a.title || a.content),
       },
       related: related.map(artCard),
+    });
+  } catch (err) { next(err); }
+});
+
+// Urdu tab ke liye auto-translation: sirf tab jab admin ne Urdu nahi likha. Pehli dafa API se translate hoti hai,
+// phir database mein cache (English badle to hash badalta hai aur dobara translate hoti hai).
+const urInflight = new Map(); // articleId -> Promise (ek hi article ki double calls na hon)
+const urCooldown = new Map(); // articleId -> time (fail hone par 60s tak dobara API call nahi)
+router.get("/articles/:id/urdu", async (req, res, next) => {
+  try {
+    if (!mongoose.isValidObjectId(req.params.id)) return res.status(404).json({ error: "Not found" });
+    const a = await Article.findOne({ _id: req.params.id, ...liveArt });
+    if (!a) return res.status(404).json({ error: "Not found" });
+    if (a.titleUr || a.excerptUr || a.contentUr) return res.status(409).json({ error: "Urdu already provided" });
+    if (!translateEnabled) return res.status(503).json({ error: "Auto-translation on nahi hai" });
+
+    const hash = sourceHash(a.title, a.excerpt, a.content);
+    let tr = a.autoUr?.hash === hash ? a.autoUr : null;
+    if (!tr) {
+      const id = String(a._id);
+      if ((urCooldown.get(id) || 0) > Date.now()) return res.status(503).json({ error: "Thori der baad dobara koshish karein" });
+      let job = urInflight.get(id);
+      if (!job) {
+        job = translateArticleToUrdu({ title: a.title, excerpt: a.excerpt, content: a.content })
+          .then(async (t) => {
+            const saved = { hash, ...t };
+            await Article.updateOne({ _id: a._id }, { $set: { autoUr: saved } }, { timestamps: false });
+            return saved;
+          })
+          .finally(() => urInflight.delete(id));
+        urInflight.set(id, job);
+      }
+      try {
+        tr = await job;
+      } catch (err) {
+        urCooldown.set(id, Date.now() + 60000);
+        console.error("[translate] article", id, err.message);
+        return res.status(502).json({ error: "Translation nahi ho saki" });
+      }
+    }
+    res.set("Cache-Control", "no-cache");
+    res.json({
+      titleUr: tr.titleUr || "",
+      excerptUr: tr.excerptUr || "",
+      htmlUr: sanitizeHtml(tr.contentUr || "", ARTICLE_HTML),
     });
   } catch (err) { next(err); }
 });

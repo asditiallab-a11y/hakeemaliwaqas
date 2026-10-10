@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { buyUrl } from "../../lib/whatsapp";
 const GOLD = "#d4a017";
 
 function CartIcon() {
@@ -13,22 +14,27 @@ function CartIcon() {
 }
 
 export default function MedicineCard({ medicine, whatsappNumber = "" }) {
-  const buyLink = whatsappNumber
-    ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`I want to buy ${medicine.name}`)}`
-    : "";
+  const buyLink = buyUrl(whatsappNumber, { name: medicine.name, price: medicine.price });
+  // Buy Now ko card ke "poore card clickable" layer se upar rakha hai (zIndex), taake wo apna kaam kare
   const buyStyle = {
     background: "linear-gradient(90deg, #25d366, #128c7e)",
     fontSize: 13,
     padding: "9px 0",
     fontFamily: "Inter, sans-serif",
     borderRadius: 6,
+    position: "relative",
+    zIndex: 2,
   };
   const buyClass = "btn w-100 d-flex align-items-center justify-content-center gap-2 text-white fw-semibold mt-auto";
   const internal = String(medicine.link || "").startsWith("/");
 
+  // stretched-link: is link ka clickable area poore card par phail jata hai => card par kahin bhi click = detail page
+  const detailsClass = "stretched-link text-center text-decoration-none mt-3";
+  const detailsStyle = { color: GOLD, fontSize: 12, fontWeight: 500, fontFamily: "Inter, sans-serif" };
+
   return (
     <div
-      className="h-100 rounded-3 overflow-hidden d-flex flex-column"
+      className="position-relative h-100 rounded-3 overflow-hidden d-flex flex-column"
       style={{ background: "#f5f4f1", border: "1px solid #e4e1da", boxShadow: "0 2px 6px rgba(0,0,0,.1)" }}
     >
       {/* Image */}
@@ -38,8 +44,8 @@ export default function MedicineCard({ medicine, whatsappNumber = "" }) {
         )}
       </div>
 
-      {/* Body */}
-      <div className="p-4 d-flex flex-column flex-grow-1">
+      {/* Body (upar ki padding 1rem) */}
+      <div className="p-4 pt-3 d-flex flex-column flex-grow-1">
         <h3
           className="fw-bold mb-2"
           style={{ fontFamily: "'Playfair Display', serif", fontSize: 18, color: "#1f2a24" }}
@@ -84,19 +90,11 @@ export default function MedicineCard({ medicine, whatsappNumber = "" }) {
         )}
 
         {internal ? (
-          <Link
-            to={medicine.link}
-            className="text-center text-decoration-none mt-3"
-            style={{ color: GOLD, fontSize: 12, fontWeight: 500, fontFamily: "Inter, sans-serif" }}
-          >
+          <Link to={medicine.link} className={detailsClass} style={detailsStyle}>
             View Full Details →
           </Link>
         ) : (
-          <a
-            href={medicine.link}
-            className="text-center text-decoration-none mt-3"
-            style={{ color: GOLD, fontSize: 12, fontWeight: 500, fontFamily: "Inter, sans-serif" }}
-          >
+          <a href={medicine.link} className={detailsClass} style={detailsStyle}>
             View Full Details →
           </a>
         )}

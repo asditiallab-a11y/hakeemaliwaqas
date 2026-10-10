@@ -10,6 +10,7 @@ const DEFAULT_HEAD = {
   title: "Video Collection",
   desc: "Educational videos on Hikmat, herbal remedies, and natural healing — in both long-form and short formats",
 };
+const DEFAULT_CHANNEL = "https://www.youtube.com/@hakeemaliwaqas3335?sub_confirmation=1";
 const DEFAULT_NOTICE = { text: "Videos صرف Subscribers کے لیے ہیں", btn: "Subscribe", link: "" };
 
 // Popup player (sirf jab videos unlocked hon)
@@ -51,6 +52,98 @@ function Player({ video, isShort, onClose }) {
   );
 }
 
+// Subscribe popup (locked video card par click karne se khulta hai): laal header + cream body
+const POPUP_TEXT = {
+  sub: "Prof Hakeem Ali Waqas — Ancient Wisdom, Modern Healing",
+  body: "یہ ویڈیوز صرف Subscribers کے لیے ہیں۔ Subscribe کریں اور تمام ویڈیوز مفت دیکھیں۔",
+  btn: "YouTube Channel Subscribe کریں",
+  foot: "پہلے YouTube Subscribe کریں — پھر Unlock کا بٹن ظاہر ہوگا۔",
+};
+
+function YtIcon({ size = 20, strokeWidth = 2 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="2" y="5" width="20" height="14" rx="4" />
+      <path d="M10 9.5v5l4.5-2.5z" fill="currentColor" />
+    </svg>
+  );
+}
+
+function SubscribePopup({ title, link, onClose }) {
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && onClose();
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={title}
+      onClick={onClose}
+      style={{
+        position: "fixed", inset: 0, zIndex: 2000, padding: 16,
+        background: "rgba(0,0,0,.65)", backdropFilter: "blur(4px)", WebkitBackdropFilter: "blur(4px)",
+        display: "flex", alignItems: "center", justifyContent: "center",
+      }}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="position-relative overflow-hidden"
+        style={{ width: "100%", maxWidth: 448, borderRadius: 20, boxShadow: "0 20px 60px rgba(0,0,0,.5)" }}
+      >
+        {/* Laal header */}
+        <div className="text-center text-white" style={{ background: "#f00", padding: "32px 24px 24px" }}>
+          <button
+            type="button"
+            aria-label="Close"
+            onClick={onClose}
+            className="border-0 text-white d-flex align-items-center justify-content-center position-absolute"
+            style={{ top: 12, right: 12, width: 44, height: 44, borderRadius: "50%", background: "rgba(0,0,0,.25)", fontSize: 22, lineHeight: 1 }}
+          >
+            ✕
+          </button>
+          <div
+            className="d-flex align-items-center justify-content-center mx-auto mb-3"
+            style={{ width: 64, height: 64, borderRadius: "50%", background: "rgba(255,255,255,.2)" }}
+          >
+            <YtIcon size={30} />
+          </div>
+          <h3 className="fw-bold mb-2" style={{ fontFamily: "'Playfair Display', serif", fontSize: 22 }}>{title}</h3>
+          <div style={{ fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: 14 }}>{POPUP_TEXT.sub}</div>
+        </div>
+
+        {/* Cream body */}
+        <div className="text-center" style={{ background: "#f5f3ee", padding: "28px 24px 24px" }}>
+          <p dir="rtl" className="mb-4" style={{ fontFamily: "'Noto Nastaliq Urdu', serif", color: "#4a4a4a", fontSize: 14, lineHeight: 2.1 }}>
+            {POPUP_TEXT.body}
+          </p>
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={onClose}
+            className="d-flex align-items-center justify-content-center gap-2 text-white text-decoration-none"
+            style={{ background: "#f00", borderRadius: 12, height: 48, fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: 15 }}
+          >
+            <YtIcon size={20} /> {POPUP_TEXT.btn}
+          </a>
+          <p dir="rtl" className="mb-0 mt-3" style={{ fontFamily: "'Noto Nastaliq Urdu', serif", color: "#6c6c6c", fontSize: 12, lineHeight: 2 }}>
+            {POPUP_TEXT.foot}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // Props server (/api/site/videos) se aate hain; na milen to purana static content dikhta hai.
 export default function VideoCollection({
   long = staticLong,
@@ -58,13 +151,14 @@ export default function VideoCollection({
   head = DEFAULT_HEAD,
   notice = DEFAULT_NOTICE,
   isSubscriber = false, // true => videos unlock (play hoti hain)
-  defaultTab = "short",
+  defaultTab = "long",
   lockTitle,
   lockSub,
 }) {
   const first = defaultTab === "long" ? (long.length ? "long" : "short") : short.length ? "short" : "long";
   const [tab, setTab] = useState(first);
   const [playing, setPlaying] = useState(null);
+  const [showSub, setShowSub] = useState(false);
   const isShort = tab === "short";
   const videos = isShort ? short : long;
 
@@ -159,6 +253,7 @@ export default function VideoCollection({
                 lockTitle={lockTitle}
                 lockSub={lockSub}
                 onPlay={v.youtubeId ? setPlaying : undefined}
+                onLockedClick={() => setShowSub(true)}
               />
             </div>
           ))}
@@ -170,6 +265,13 @@ export default function VideoCollection({
         </div>
       </div>
 
+      {showSub && (
+        <SubscribePopup
+          title={lockTitle || "Subscribe to Watch"}
+          link={notice.link || DEFAULT_CHANNEL}
+          onClose={() => setShowSub(false)}
+        />
+      )}
       {playing && <Player video={playing} isShort={isShort} onClose={() => setPlaying(null)} />}
     </section>
   );

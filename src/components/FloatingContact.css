@@ -1,0 +1,70 @@
+.fc-wrap {
+  position: fixed;
+  right: 16px;
+  bottom: 18px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+}
+
+.fc-btn {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding: 0;
+  border-radius: 999px;
+  color: #fff;
+  text-decoration: none;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease;
+}
+
+.fc-yt { background: #ef4444; }
+.fc-wa { background: #1fa855; }
+
+.fc-icon {
+  flex: 0 0 50px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+}
+
+/* label normally hidden, hover par expand hota hai */
+.fc-label {
+  max-width: 0;
+  opacity: 0;
+  white-space: nowrap;
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  transition: max-width 0.35s ease, opacity 0.25s ease, padding 0.35s ease;
+}
+
+.fc-btn:hover,
+.fc-btn:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.fc-btn:hover .fc-label,
+.fc-btn:focus-visible .fc-label {
+  max-width: 140px;
+  opacity: 1;
+  padding-right: 18px;
+}
+
+.fc-yt:hover { background: #dc2626; }
+.fc-wa:hover { background: #178a45; }
+
+@media (max-width: 768px) {
+  .fc-wrap { right: 10px; bottom: 12px; gap: 10px; }
+  .fc-btn, .fc-icon { height: 44px; }
+  .fc-icon { flex-basis: 44px; width: 44px; font-size: 22px; }
+}
