@@ -4,21 +4,23 @@
   background: #0d2d1d !important;
   width: 100%;
   padding: 0px 75px;
-  position: relative;
+  position: relative; /* NEW: double line ke liye */
 }
+
+/* NEW: Header bottom double line (white + green) */
 .site-header::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 7px;                 /* total height: 3px white + 4px green */
+  height: 7px; /* 3px white + 4px green */
   background: linear-gradient(
     to bottom,
     #ffffff 0,
-    #ffffff 3px,               /* white line */
+    #ffffff 3px,   /* white line */
     #1f7a4d 3px,
-    #1f7a4d 7px                /* green line */
+    #1f7a4d 7px    /* green line */
   );
   pointer-events: none;
   z-index: 2;
@@ -424,6 +426,9 @@
     height: 64px;
   }
   .site-header.overlay { height: 0; }
+
+  /* NEW: mobile par double line hide (yahan header sirf spacer hai) */
+  .site-header::after { display: none; }
 
   .m-header {
     position: fixed;
