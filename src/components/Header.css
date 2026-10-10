@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 
+/* NEW: Double line colors (yahan se change karein) */
+:root {
+  --line-white: #f5f0e1; /* header title wala cream-white */
+  --line-green: #1c5a3a; /* header green (#0d2d1d) ka lighter shade */
+}
+
 .site-header {
   background: #0d2d1d !important;
   width: 100%;
@@ -17,10 +23,10 @@
   height: 7px; /* 3px white + 4px green */
   background: linear-gradient(
     to bottom,
-    #ffffff 0,
-    #ffffff 3px,   /* white line */
-    #1f7a4d 3px,
-    #1f7a4d 7px    /* green line */
+    var(--line-white) 0,
+    var(--line-white) 3px,
+    var(--line-green) 3px,
+    var(--line-green) 7px
   );
   pointer-events: none;
   z-index: 2;
@@ -279,7 +285,7 @@
   background: rgba(10, 36, 23, 0.94);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(212, 160, 23, 0.35);
+  border-bottom: 0; /* CHANGED: purana gold border hata diya, ab double line hai */
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
   transform: translateY(-105%);
   opacity: 0;
@@ -293,6 +299,25 @@
   visibility: visible;
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease, visibility 0s;
 }
+
+/* NEW: Sticky navbar ke neeche bhi same double line */
+.sticky-nav::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -7px; /* navbar ke bilkul neeche */
+  height: 7px;
+  background: linear-gradient(
+    to bottom,
+    var(--line-white) 0,
+    var(--line-white) 3px,
+    var(--line-green) 3px,
+    var(--line-green) 7px
+  );
+  pointer-events: none;
+}
+
 .sticky-inner {
   max-width: 1240px;
   margin: 0 auto;
@@ -382,7 +407,7 @@
   .sticky-burger { display: inline-flex; }
   .sticky-menu {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 7px); /* CHANGED: double line ke neeche */
     left: 0;
     right: 0;
     flex-direction: column;
