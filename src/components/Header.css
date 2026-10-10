@@ -4,6 +4,7 @@
   background: #0d2d1d !important;
   width: 100%;
   padding: 0px 75px;
+  position: relative;
 }
 .site-header::after {
   content: "";
