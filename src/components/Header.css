@@ -432,9 +432,7 @@
 
 /* =====================================================
    MOBILE HEADER (<= 991px)
-   - Page top par: transparent (logo center, search + burger right)
-   - Overlay (medicine detail) top par: white text
-   - Non-overlay pages top par: dark text (.plain)
+   - Page top par: transparent (logo center, search + burger right, white text)
    - Scroll / menu open: white background (.light)
    ===================================================== */
 .m-header { display: none; }
@@ -445,14 +443,13 @@
   .site-header .navbar,
   .sticky-nav { display: none !important; }
 
-  /* .site-header ab sirf spacer hai (header fixed hai).
-     Overlay page (detail) par spacer 0 => banner screen ke top se shuru */
+  /* .site-header ab zero-height hai (header fixed hai) =>
+     banner / hero screen ke top se shuru hota hai aur header uske upar transparent hota hai */
   .site-header {
     padding: 0 !important;
     background: transparent !important;
-    height: 64px;
+    height: 0;
   }
-  .site-header.overlay { height: 0; }
 
   /* NEW: mobile par double line hide (yahan header sirf spacer hai) */
   .site-header::after { display: none; }
@@ -545,11 +542,6 @@
   }
   .m-header.light .m-icon-btn { color: #1f2a24; }
   .m-header.light .m-burger { color: #1f2a24; border-color: #d9d4c7; }
-
-  /* NEW: non-overlay pages par top par (transparent) dark text */
-  .m-header.plain .m-logo strong,
-  .m-header.plain .m-icon-btn { color: #1f2a24; }
-  .m-header.plain .m-burger { color: #1f2a24; border-color: #d9d4c7; }
 
   /* Dropdown menu */
   .m-menu {
