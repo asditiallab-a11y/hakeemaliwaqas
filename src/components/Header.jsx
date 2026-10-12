@@ -34,8 +34,6 @@ function Header() {
   const overlay = pathname.startsWith("/herbal-medicines/") && pathname.length > "/herbal-medicines/".length;
   // Mobile header: top par har page par transparent, scroll / menu open par white
   const light = stuck || menuOpen;
-  // Non-overlay pages par top par (transparent) text dark rahe, warna white text dikhai nahi dega
-  const plain = !overlay && !light;
 
   // Scroll par: desktop compact navbar + mobile header ka white background
   useEffect(() => {
@@ -175,7 +173,7 @@ function Header() {
       </div>
 
       {/* Mobile header (<= 991px): logo (center) + search + burger. Top par transparent, scroll par white */}
-      <div className={`m-header ${light ? "light" : ""} ${plain ? "plain" : ""}`}>
+      <div className={`m-header ${light ? "light" : ""}`}>
         <Link to="/" className="m-logo">
           <img src="/images/leaf.svg" alt="" />
           <span>
@@ -217,4 +215,5 @@ function Header() {
     </header>
   );
 }
+
 export default Header;
