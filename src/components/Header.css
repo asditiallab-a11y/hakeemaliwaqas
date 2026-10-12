@@ -433,7 +433,7 @@
 /* =====================================================
    MOBILE HEADER (<= 991px)
    - Page top par: transparent (logo center, search + burger right, white text)
-   - Scroll / menu open: white background (.light)
+   - Scroll / menu open: white background (.light) + logo left side par
    ===================================================== */
 .m-header { display: none; }
 
@@ -488,6 +488,7 @@
     min-width: 0;
     max-width: calc(100% - 120px);
     text-decoration: none;
+    transition: left 0.35s ease, transform 0.35s ease;
   }
   .m-logo span { text-align: left; }
   .m-logo img { width: 30px; height: 30px; flex: none; }
@@ -510,6 +511,11 @@
     white-space: nowrap;
   }
   .m-header.light .m-logo strong { color: #1f2a24; }
+  /* Scroll / menu open (white bg) par logo left side par aa jaye */
+  .m-header.light .m-logo {
+    left: 16px;
+    transform: translate(0, -50%);
+  }
 
   /* Search + burger */
   .m-actions { display: flex; align-items: center; gap: 6px; flex: none; position: relative; z-index: 1; }
