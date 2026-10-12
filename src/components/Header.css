@@ -432,8 +432,10 @@
 
 /* =====================================================
    MOBILE HEADER (<= 991px)
-   - Medicine detail page: banner ke upar transparent (overlay)
-   - Scroll / menu open / baqi pages: white background
+   - Page top par: transparent (logo center, search + burger right)
+   - Overlay (medicine detail) top par: white text
+   - Non-overlay pages top par: dark text (.plain)
+   - Scroll / menu open: white background (.light)
    ===================================================== */
 .m-header { display: none; }
 
@@ -465,7 +467,7 @@
     padding: 0 16px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end; /* CHANGED: actions right par, logo absolute center */
     gap: 12px;
     background: transparent;
     border-bottom: 1px solid transparent;
@@ -477,14 +479,20 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   }
 
-  /* Logo */
+  /* Logo - bilkul center */
   .m-logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
     gap: 10px;
     min-width: 0;
+    max-width: calc(100% - 120px);
     text-decoration: none;
   }
+  .m-logo span { text-align: left; }
   .m-logo img { width: 30px; height: 30px; flex: none; }
   .m-logo strong {
     display: block;
@@ -507,7 +515,7 @@
   .m-header.light .m-logo strong { color: #1f2a24; }
 
   /* Search + burger */
-  .m-actions { display: flex; align-items: center; gap: 6px; flex: none; }
+  .m-actions { display: flex; align-items: center; gap: 6px; flex: none; position: relative; z-index: 1; }
   .m-icon-btn {
     width: 40px;
     height: 40px;
@@ -537,6 +545,11 @@
   }
   .m-header.light .m-icon-btn { color: #1f2a24; }
   .m-header.light .m-burger { color: #1f2a24; border-color: #d9d4c7; }
+
+  /* NEW: non-overlay pages par top par (transparent) dark text */
+  .m-header.plain .m-logo strong,
+  .m-header.plain .m-icon-btn { color: #1f2a24; }
+  .m-header.plain .m-burger { color: #1f2a24; border-color: #d9d4c7; }
 
   /* Dropdown menu */
   .m-menu {
@@ -577,6 +590,8 @@
   .m-menu .m-consult .consultation-btn { width: 100%; justify-content: center; padding: 14px; font-size: 11px; }
 }
 
-@media (max-width: 340px) {
+/* CHANGED: chhoti screens par logo search/burger se overlap na kare */
+@media (max-width: 420px) {
   .m-logo small { display: none; }
+  .m-logo strong { font-size: 14px; }
 }
