@@ -1946,3 +1946,69 @@
   text-align: center;
   white-space: pre-line;
 }
+
+/* Hero controls (volume + scroll down) */
+.hero-controls {
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hero-ctrl-btn {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(20, 20, 20, 0.55);
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.hero-ctrl-btn:hover {
+  background: #d9a521;
+  border-color: #d9a521;
+  color: #1a1a1a;
+}
+
+/* Scroll down: bounce */
+.hero-scroll-btn {
+  animation: hero-bounce 1.6s ease-in-out infinite;
+}
+
+.hero-scroll-btn:hover {
+  animation-play-state: paused;
+}
+
+@keyframes hero-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(10px); }
+}
+
+@media (max-width: 768px) {
+  .hero-controls {
+    bottom: 24px;
+    gap: 12px;
+  }
+  .hero-ctrl-btn {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-btn {
+    animation: none;
+  }
+}
