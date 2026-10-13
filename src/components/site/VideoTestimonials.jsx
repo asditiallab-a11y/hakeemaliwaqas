@@ -21,7 +21,8 @@ const ROW_CSS = `
 .vt-row { display: flex; flex-wrap: wrap; justify-content: center; gap: ${CARD_GAP}px; }
 .vt-slot { flex: 0 0 calc(50% - ${CARD_GAP / 2}px); max-width: calc(50% - ${CARD_GAP / 2}px); }
 @media (min-width: 768px) {
-  .vt-slot { flex: 0 0 ${CARD_WIDTH}px; max-width: ${CARD_WIDTH}px; }
+  .vt-row { flex-wrap: nowrap; gap: clamp(8px, 1.6vw, ${CARD_GAP}px); }
+  .vt-slot { flex: 1 1 0; min-width: 0; max-width: ${CARD_WIDTH}px; }
 }
 `;
 
