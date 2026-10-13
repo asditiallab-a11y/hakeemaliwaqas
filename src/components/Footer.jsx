@@ -162,6 +162,17 @@ function Footer() {
           <div className="ft-bottom-links">
             <Link to="/privacy-policy">Privacy Policy</Link>
             <Link to="/terms-of-service">Terms of Service</Link>
+            <span className="ft-credit">
+              Designed &amp; Developed by
+              <a
+                href="https://protoolz.shop"
+                target="_blank"
+                rel="noreferrer"
+                className="ft-credit-pill"
+              >
+                Protoolz.shop <span className="ft-credit-arrow">↗</span>
+              </a>
+            </span>
           </div>
         </div>
       </div>
