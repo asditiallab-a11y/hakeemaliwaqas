@@ -2032,3 +2032,35 @@
     height: 218px !important;
   }
 }
+
+
+/* ===== Featured Treatments: ek line mein 3 cards (768px aur upar) ===== */
+@media (min-width: 768px) {
+  .ft-cards-row > .ft-col {
+    flex: 0 0 auto;
+    width: 33.33333333%;
+  }
+}
+
+/* Tablet (768-991px): 3 cards chhoti width mein, isliye thoda compact */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .ft-card-img-wrap {
+    height: 190px;
+  }
+  .ft-tag {
+    left: 10px;
+    bottom: 10px;
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+  .ft-card-body {
+    padding: 18px 16px 20px;
+  }
+  .ft-card-title {
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+  .ft-card-text {
+    font-size: 13.5px;
+  }
+}
