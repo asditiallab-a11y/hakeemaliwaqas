@@ -30,11 +30,17 @@ export default function CtaBanner({
             {title}
           </h2>
           <p
-            className="mb-4"
-            style={{ fontFamily: "Inter, sans-serif", fontSize: 16, lineHeight: 1.7, color: "rgba(255,255,255,.85)" }}
-          >
-            {text}
-          </p>
+  className="mb-4"
+  style={{
+    fontFamily: "Inter, sans-serif",
+    fontSize: 16,
+    lineHeight: 1.7,
+    color: "rgba(255,255,255,.85)",
+    whiteSpace: "pre-line",   // NEW
+  }}
+>
+  {text}
+</p>
           <Link
             to={buttonLink}
             className="btn text-uppercase fw-medium px-4 py-2"
