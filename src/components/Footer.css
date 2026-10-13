@@ -119,7 +119,7 @@
 .ft-about {
   max-width: 330px;
   margin: 24px 0 30px;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.52;
   color: rgba(255, 255, 255, 0.92);
 }
@@ -190,7 +190,7 @@
   align-items: center;
   padding: 8px 12px 8px 22px;
   margin-left: -2px;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 22px;
   font-weight: 500;
   color: #fff;
@@ -240,7 +240,7 @@
 }
 .ft-contact p {
   margin: 0;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 1.3;
   color: #fff;
