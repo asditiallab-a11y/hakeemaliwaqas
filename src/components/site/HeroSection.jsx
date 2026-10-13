@@ -47,7 +47,7 @@ export default function HeroSection({
       />
 
       {/* Content */}
-      <div className="position-relative px-3 py-5">
+      <div className="position-relative px-3 py-5 pb-0">
         <p
           className="text-uppercase fw-medium small mb-2"
           style={{ color: "#d9a21b", letterSpacing: "3px", fontFamily: "Jost, sans-serif" }}
@@ -56,7 +56,7 @@ export default function HeroSection({
         </p>
         <h1
           className="text-white fw-bold display-3 mb-0"
-          style={{ fontFamily: "'Playfair Display', serif" }}
+          style={{ fontFamily: "'Playfair Display', serif", fontSize: 60 }}
         >
           {title}
         </h1>
