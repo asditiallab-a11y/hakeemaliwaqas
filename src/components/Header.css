@@ -282,7 +282,7 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(10, 36, 23, 0.94);
+  background: rgba(10, 36, 23, 0.82); 
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 0; /* CHANGED: purana gold border hata diya, ab double line hai */
