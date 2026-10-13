@@ -25,7 +25,7 @@ export default function CtaBanner({
         <div className="py-4">
           <h2
             className="fw-bold mb-3"
-            style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(28px, 4vw, 38px)" }}
+            style={{ fontFamily: "'Playfair Display', serif", fontSize: "36px" }}
           >
             {title}
           </h2>
