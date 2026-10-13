@@ -21,7 +21,7 @@ export default function CtaBanner({
         className="position-absolute top-0 start-0 w-100 h-100"
         style={{ background: `rgba(0,0,0,${overlay})` }}
       />
-      <div className="container position-relative py-5" style={{ maxWidth: 680 }}>
+      <div className="container position-relative py-5" style={{ maxWidth: 780 }}>
         <div className="py-4">
           <h2
             className="fw-bold mb-3"
