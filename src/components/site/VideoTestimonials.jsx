@@ -13,15 +13,15 @@ const FALLBACKS = [
 ];
 
 // Home page par ek row mein itne cards dikhte hain (baqi "View All Reviews" se).
-const HOME_LIMIT = 4;
-// Har card ke slot ki width (768px aur upar). Chhoti screen par 2 cards ek line mein.
-const SLOT_WIDTH = "23.33%";
+const HOME_LIMIT = 5;
+const CARD_WIDTH = 172; // har card ki width (px)
+const CARD_GAP = 18; // cards ke darmiyan space (px)
 
 const ROW_CSS = `
-.vt-row { display: flex; flex-wrap: wrap; justify-content: center; }
-.vt-slot { flex: 0 0 48%; max-width: 48%; padding: 0 8px; margin-bottom: 16px; }
+.vt-row { display: flex; flex-wrap: wrap; justify-content: center; gap: ${CARD_GAP}px; }
+.vt-slot { flex: 0 0 calc(50% - ${CARD_GAP / 2}px); max-width: calc(50% - ${CARD_GAP / 2}px); }
 @media (min-width: 768px) {
-  .vt-slot { flex: 0 0 ${SLOT_WIDTH}; max-width: ${SLOT_WIDTH}; margin-bottom: 0; }
+  .vt-slot { flex: 0 0 ${CARD_WIDTH}px; max-width: ${CARD_WIDTH}px; }
 }
 `;
 
@@ -75,7 +75,7 @@ export default function VideoTestimonials({ items = videoTestimonials, viewAllLi
       <div
         key={v.id}
         className="text-center d-block mx-auto"
-        style={{ width: 160, maxWidth: "100%" }}
+        style={{ width: CARD_WIDTH, maxWidth: "100%" }}
       >
         {isPlaying ? (
           <div className="position-relative rounded-3 overflow-hidden mb-2" style={boxStyle}>
