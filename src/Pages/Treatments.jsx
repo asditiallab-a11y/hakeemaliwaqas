@@ -77,7 +77,7 @@ export default function Treatments() {
                     className="btn rounded-pill"
                     style={{
                       fontFamily: "Inter, sans-serif",
-                      fontSize: 13,
+                      fontSize: 14,
                       padding: "6px 18px",
                       background: isActive ? GOLD : "#fff",
                       color: isActive ? "#fff" : "#4a4f57",
