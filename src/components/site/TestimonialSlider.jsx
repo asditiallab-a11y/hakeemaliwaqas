@@ -13,6 +13,13 @@ function getPerView() {
   return 1;
 }
 
+// 768px aur upar: arrows heading wale block ke top-right mein; us se neeche: center mein
+const ARROW_CSS = `
+@media (min-width: 768px) {
+  .tsl-arrows { position: absolute; top: 0; right: 0; margin-bottom: 0 !important; }
+}
+`;
+
 function Arrow({ dir }) {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -77,24 +84,28 @@ export default function TestimonialSlider({
   return (
     <section className="bg-white py-5">
       <div className="container">
-        <SectionHeading label={label} title={title} subtitle={subtitle} />
+        <style>{ARROW_CSS}</style>
 
-        {/* Arrows (center) */}
-        <div className="d-flex justify-content-center gap-2 mb-3">
-          <button
-            type="button" aria-label="Previous" onClick={prev} disabled={index === 0}
-            className="btn rounded-circle d-flex align-items-center justify-content-center p-0"
-            style={arrowBtn(index === 0)}
-          >
-            <Arrow dir="left" />
-          </button>
-          <button
-            type="button" aria-label="Next" onClick={next} disabled={index >= maxIndex}
-            className="btn rounded-circle d-flex align-items-center justify-content-center p-0"
-            style={arrowBtn(index >= maxIndex)}
-          >
-            <Arrow dir="right" />
-          </button>
+        {/* Heading + arrows: desktop par arrows heading ke right (top) mein, mobile par neeche center */}
+        <div className="position-relative">
+          <SectionHeading label={label} title={title} subtitle={subtitle} />
+
+          <div className="tsl-arrows d-flex justify-content-center gap-2 mb-3">
+            <button
+              type="button" aria-label="Previous" onClick={prev} disabled={index === 0}
+              className="btn rounded-circle d-flex align-items-center justify-content-center p-0"
+              style={arrowBtn(index === 0)}
+            >
+              <Arrow dir="left" />
+            </button>
+            <button
+              type="button" aria-label="Next" onClick={next} disabled={index >= maxIndex}
+              className="btn rounded-circle d-flex align-items-center justify-content-center p-0"
+              style={arrowBtn(index >= maxIndex)}
+            >
+              <Arrow dir="right" />
+            </button>
+          </div>
         </div>
 
         {/* Slider */}
