@@ -31,7 +31,7 @@ export default function CtaBanner({
           </h2>
           <p
             className="mb-4"
-            style={{ fontFamily: "Inter, sans-serif", fontSize: 15, lineHeight: 1.7, color: "rgba(255,255,255,.85)" }}
+            style={{ fontFamily: "Inter, sans-serif", fontSize: 16, lineHeight: 1.7, color: "rgba(255,255,255,.85)" }}
           >
             {text}
           </p>
