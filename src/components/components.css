@@ -2040,6 +2040,12 @@
     flex: 0 0 auto;
     width: 33.33333333%;
   }
+  .vt-slot{
+            flex: 0 0 23.33%;
+        max-width: 15.33%;
+        margin-bottom: 0;
+    }
+  } 
 }
 
 /* Featured Treatments card image: 768px aur upar sab screens par 256px (reference jaisi) */
