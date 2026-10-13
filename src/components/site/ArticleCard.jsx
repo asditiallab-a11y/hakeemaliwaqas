@@ -33,14 +33,14 @@ export default function ArticleCard({ article, readMore = "Read More →" }) {
       <div className="p-4 d-flex flex-column flex-grow-1">
         <div
           className="d-flex align-items-center gap-2 mb-2"
-          style={{ fontSize: 11, color: "#7a7a7a", fontFamily: "Inter, sans-serif" }}
+          style={{ fontSize: 12, color: "#7a7a7a", fontFamily: "Inter, sans-serif" }}
         >
           <CalendarIcon /> {fmtDate(article.date)}
         </div>
 
         <h3
           className="fw-bold mb-2"
-          style={{ fontFamily: "'Playfair Display', serif", fontSize: 17, lineHeight: 1.35, color: "#1f2a24" }}
+          style={{ fontFamily: "'Playfair Display', serif", fontSize: 20  , lineHeight: 1.35, color: "#1f2a24" }}
         >
           {article.title}
         </h3>
@@ -48,7 +48,7 @@ export default function ArticleCard({ article, readMore = "Read More →" }) {
         <p
           className="mb-3"
           style={{
-            fontSize: 12.5,
+            fontSize: 14,
             lineHeight: 1.6,
             color: "#6b6b6b",
             fontFamily: "Inter, sans-serif",
@@ -62,11 +62,11 @@ export default function ArticleCard({ article, readMore = "Read More →" }) {
         </p>
 
         {String(article.link || "").startsWith("/") ? (
-          <Link to={article.link} className="mt-auto text-decoration-none" style={{ fontSize: 12, color: GOLD, fontFamily: "Inter, sans-serif" }}>
+          <Link to={article.link} className="mt-auto text-decoration-none" style={{ fontSize: 14, color: GOLD, fontFamily: "Inter, sans-serif" }}>
             {readMore}
           </Link>
         ) : (
-          <a href={article.link || "#"} className="mt-auto text-decoration-none" style={{ fontSize: 12, color: GOLD, fontFamily: "Inter, sans-serif" }}>
+          <a href={article.link || "#"} className="mt-auto text-decoration-none" style={{ fontSize: 14, color: GOLD, fontFamily: "Inter, sans-serif" }}>
             {readMore}
           </a>
         )}
