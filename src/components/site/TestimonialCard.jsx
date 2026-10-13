@@ -44,7 +44,7 @@ export default function TestimonialCard({ item }) {
         {...body}
         style={{
           fontStyle: item.rtl ? "normal" : "italic",
-          fontSize: item.rtl ? 14 : 13.5,
+          fontSize: 16,
           lineHeight: item.rtl ? 2.2 : 1.85,
           color: "#555",
           fontFamily: item.rtl ? "'Noto Nastaliq Urdu', serif" : "Inter, sans-serif",
