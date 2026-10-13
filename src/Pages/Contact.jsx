@@ -169,7 +169,7 @@ function AppointmentForm() {
       <button
         type="submit"
         className="btn text-uppercase fw-semibold mt-4 px-4"
-        style={{ background: GOLD, color: "#fff", fontSize: 13, letterSpacing: ".5px", fontFamily: "Inter, sans-serif", borderRadius: 4 }}
+        style={{ background: GOLD, color: "#fff", fontSize: 14, letterSpacing: ".5px", fontFamily: "Inter, sans-serif", borderRadius: 4 }}
       >
         Request Appointment
       </button>
