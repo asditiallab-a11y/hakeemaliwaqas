@@ -130,7 +130,7 @@ export default function VideoCard({
 
       {/* Title */}
       <div className="px-3 py-2" style={{ minHeight: 52 }}>
-        <div className="fw-bold" dir="auto" style={{ fontFamily: "'Playfair Display', serif", fontSize: 14, color: "#1f2a24" }}>
+        <div className="fw-bold" dir="auto" style={{ fontFamily: "'Playfair Display', serif", fontSize: 18, color: "#1f2a24" }}>
           {video.title}
         </div>
         {video.description && (
@@ -138,7 +138,7 @@ export default function VideoCard({
             className="text-secondary mt-1"
             dir="auto"
             style={{
-              fontFamily: "Inter, sans-serif", fontSize: 12, lineHeight: 1.5,
+              fontFamily: "Inter, sans-serif", fontSize: 14, lineHeight: 1.5,
               display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden",
             }}
           >
