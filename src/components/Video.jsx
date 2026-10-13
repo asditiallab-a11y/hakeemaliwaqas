@@ -6,6 +6,9 @@ const CHANNEL_URL =
   "https://www.youtube.com/@hakeemaliwaqas3335?sub_confirmation=1";
 const STORAGE_KEY = "hikmat_videos_unlocked";
 
+// Carousel auto move: har itne milliseconds baad ek step aage (yahan se speed badlein)
+const AUTOPLAY_MS = 3500;
+
 // Replace thumbnails / titles / youtube links with your real data.
 const defaultVideos = Array.from({ length: 11 }, (_, i) => ({
   id: i + 1,
@@ -73,6 +76,7 @@ const VideoLibrary = ({ videos: live }) => {
     : defaultVideos;
   const [perView, setPerView] = useState(getPerView);
   const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false); // mouse/touch/focus carousel par ho to auto move ruk jaye
   const [modalOpen, setModalOpen] = useState(false);
   const [step, setStep] = useState(1); // 1 = subscribe, 2 = unlock
   const [unlocked, setUnlocked] = useState(() => {
@@ -95,6 +99,17 @@ const VideoLibrary = ({ videos: live }) => {
   useEffect(() => {
     setIndex((i) => Math.min(i, maxIndex));
   }, [maxIndex]);
+
+  /* Auto move: har AUTOPLAY_MS baad ek step aage, aakhir par wapas shuru.
+     Hover / touch / popup open ho to ruk jata hai; arrows ya dots dabane par timer dobara shuru hota hai. */
+  useEffect(() => {
+    if (paused || modalOpen || maxIndex === 0) return undefined;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
+    const t = setTimeout(() => {
+      setIndex((i) => (i >= maxIndex ? 0 : i + 1));
+    }, AUTOPLAY_MS);
+    return () => clearTimeout(t);
+  }, [index, paused, modalOpen, maxIndex]);
 
   /* lock page scroll + Esc key while popup is open */
   const closeModal = useCallback(() => setModalOpen(false), []);
@@ -165,7 +180,15 @@ const VideoLibrary = ({ videos: live }) => {
         </div>
 
         {/* Carousel */}
-        <div className="vl-viewport">
+        <div
+          className="vl-viewport"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onTouchStart={() => setPaused(true)}
+          onTouchEnd={() => setPaused(false)}
+          onFocus={() => setPaused(true)}
+          onBlur={() => setPaused(false)}
+        >
           <div
             className="row flex-nowrap vl-track"
             style={{ transform: `translateX(-${(index * 100) / perView}%)` }}
