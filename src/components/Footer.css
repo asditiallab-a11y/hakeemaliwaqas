@@ -263,3 +263,28 @@
   .ft-cta { padding: 28px 20px; margin-bottom: 44px; }
   .ft-cta h3 { font-size: 24px; }
 }
+
+/* ===== CTA card: hamesha left aligned + full width (global styles ko override) ===== */
+.site-footer .ft-cta {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+}
+.site-footer .ft-cta-text {
+  width: 100%;
+  text-align: left;
+}
+.site-footer .ft-cta-label {
+  display: flex;
+  justify-content: flex-start;
+}
+.site-footer .ft-cta h3,
+.site-footer .ft-cta p {
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+@media (max-width: 991px) {
+  .site-footer .ft-cta { align-items: flex-start; }
+  .site-footer .ft-cta-btn { align-self: flex-start; }
+}
