@@ -248,21 +248,23 @@
   transition: color 0.25s;
 }
 
-/* Contact hover effect */
+/* Contact hover effect (row highlight + icon glow) */
 .ft-contact li {
+  padding: 10px 12px;
+  margin: -10px -12px 26px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.25s;
+  transition: background 0.3s ease;
 }
-.ft-ico { transition: all 0.25s; }
-.ft-contact li:hover { transform: translateX(6px); }
+.ft-ico { transition: all 0.3s ease; }
+.ft-contact small { transition: color 0.3s ease; }
+.ft-contact li:hover { background: rgba(212, 160, 23, 0.06); }
 .ft-contact li:hover .ft-ico {
-  background: #d4a017;
-  border-color: #d4a017;
-  color: #111;
-  box-shadow: 0 6px 18px rgba(212, 160, 23, 0.35);
+  background: rgba(212, 160, 23, 0.3);
+  border-color: rgba(232, 200, 90, 0.9);
+  box-shadow: 0 0 14px rgba(212, 160, 23, 0.3);
 }
-.ft-contact li:hover p { color: #d4a017; }
-.ft-contact li:hover small { color: #d4a017; }
+.ft-contact li:hover small { color: #c9a227; }
 
 /* Bottom bar */
 .ft-bottom {
