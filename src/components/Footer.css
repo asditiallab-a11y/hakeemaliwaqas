@@ -271,7 +271,7 @@
   text-align: left;
 }
 .site-footer .ft-cta-text {
-  width: 100%;
+  flex: 1 1 auto;
   text-align: left;
 }
 .site-footer .ft-cta-label {
@@ -285,6 +285,14 @@
   margin-right: 0;
 }
 @media (max-width: 991px) {
+  .site-footer .ft-cta-text { flex: 0 0 auto; width: 100%; }
   .site-footer .ft-cta { align-items: flex-start; }
   .site-footer .ft-cta-btn { align-self: flex-start; }
+}
+
+/* ===== Desktop (992px+): text left, button right side par ===== */
+@media (min-width: 992px) {
+  .site-footer .ft-cta { flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between; }
+  .site-footer .ft-cta-text { flex: 1 1 auto; width: auto; }
+  .site-footer .ft-cta-btn { flex: 0 0 auto; margin-left: auto; align-self: center; white-space: nowrap; }
 }
