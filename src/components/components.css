@@ -2035,17 +2035,13 @@
 
 
 /* ===== Featured Treatments: ek line mein 3 cards (768px aur upar) ===== */
+/* NOTE: pehle yahan ghalat .vt-slot rule aur extra "}" tha, wo hata diya gaya hai. */
 @media (min-width: 768px) {
   .ft-cards-row > .ft-col {
     flex: 0 0 auto;
     width: 33.33333333%;
   }
-  .vt-slot{
-            flex: 0 0 23.33%;
-        max-width: 15.33%;
-        margin-bottom: 0;
-    }
-  } 
+}
 
 /* Featured Treatments card image: 768px aur upar sab screens par 256px (reference jaisi) */
 @media (min-width: 768px) {
@@ -2085,5 +2081,31 @@
   }
   .ab-section .ab-right {
     margin-top: 64px !important;
+  }
+}
+
+
+/* ===== Hero: desktop reference jaisa (768px+) ===== */
+@media (min-width: 768px) {
+  .hero-section {
+    /* header ki height ~165px; agar header ki height badle to ye number badal dein */
+    min-height: calc(100vh - 165px);
+    padding: 70px 0 110px;
+  }
+  .hero-title {
+    font-size: clamp(3.5rem, 7.6vw, 6.5rem); /* desktop par ~104px */
+    line-height: 1.1;
+  }
+  .hero-subtitle {
+    font-size: 13px;
+    letter-spacing: 4px;
+    margin-bottom: 24px;
+  }
+  .hero-line { width: 50px; }
+
+  /* mute + scroll buttons: container ke right edge ke saath align */
+  .hero-controls {
+    right: max(24px, calc((100% - 1240px) / 2 + 12px));
+    bottom: 28px;
   }
 }
