@@ -18,7 +18,7 @@ export default function TreatmentCard({ treatment, onOpen }) {
           style={{
             color: GOLD,
             background: "rgba(0,0,0,.55)",
-            fontSize: 11,
+            fontSize: 12,
             letterSpacing: "1px",
             padding: "4px 12px",
             fontFamily: "Jost, sans-serif",
@@ -33,7 +33,7 @@ export default function TreatmentCard({ treatment, onOpen }) {
       <div className="p-4 d-flex flex-column flex-grow-1">
         <h3
           className="fw-bold mb-2"
-          style={{ fontFamily: "'Playfair Display', serif", fontSize: 17, lineHeight: 1.3, color: "#1f2a24" }}
+          style={{ fontFamily: "'Playfair Display', serif", fontSize: 20, lineHeight: 1.3, color: "#1f2a24" }}
         >
           {treatment.title}
         </h3>
