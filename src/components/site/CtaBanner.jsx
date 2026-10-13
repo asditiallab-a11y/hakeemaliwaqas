@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 export default function CtaBanner({
   image = "/images/treatments-bg.png",
   title = "Begin Your Healing Journey",
-  text = "Take the first step towards natural wellness. Book a consultation with Hakeem Ali Waqas and discover the power of herbal medicine.",
+ text = "Take the first step towards natural wellness. Book a consultation with Hakeem Ali Waqas and\ndiscover the power of herbal medicine.",
   buttonText = "Book Appointment",
   buttonLink = "/contact",
   overlay = 0.82,
