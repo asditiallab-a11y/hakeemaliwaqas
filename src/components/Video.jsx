@@ -150,7 +150,7 @@ const VideoLibrary = ({ videos: live }) => {
         <div className="row align-items-center vl-head">
           <div className="col-8 col-md-9">
             <span className="vl-label">Video Library</span>
-            <h2 className="vl-heading">Watch &amp; Learn</h2>
+            {/* <h2 className="vl-heading">Watch &amp; Learn</h2> */}
           </div>
           <div className="col-4 col-md-3 text-end">
             <div className="vl-arrows">
