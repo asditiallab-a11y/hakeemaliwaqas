@@ -199,9 +199,12 @@
 
 /* Responsive */
 @media (max-width: 991px) {
-  .ft-grid { grid-template-columns: 1fr 1fr; gap: 40px 24px; }
-  .ft-brand { grid-column: 1 / -1; }
-  .ft-about { max-width: 520px; }
+  .ft-container { padding: 0 24px; }
+  /* CTA card: text upar, button neeche (left aligned) */
+  .ft-cta { flex-direction: column; align-items: flex-start; gap: 28px; padding: 38px 32px; }
+  /* CTA ke neeche divider line, phir brand aur Quick Links ek row mein */
+  .ft-grid { grid-template-columns: 1fr 1fr; gap: 40px 24px; border-top: 1px solid rgba(255, 255, 255, 0.55); padding-top: 50px; }
+  .ft-about { max-width: 330px; }
 }
 @media (max-width: 575px) {
   .site-footer { padding-top: 50px; }
@@ -259,12 +262,4 @@
 @media (max-width: 575px) {
   .ft-cta { padding: 28px 20px; margin-bottom: 44px; }
   .ft-cta h3 { font-size: 24px; }
-}
-
-/* ===== Fixes: floating social buttons ke liye left space (tablet/mobile) ===== */
-@media (max-width: 1100px) {
-  .ft-container { padding: 0 20px 0 64px; } /* 64px = left floating buttons ki jagah */
-}
-@media (max-width: 575px) {
-  .ft-container { padding: 0 16px 0 60px; }
 }
