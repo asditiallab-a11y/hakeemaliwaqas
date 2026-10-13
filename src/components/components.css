@@ -278,7 +278,7 @@
 
 .fp-img {
   width: 100%;
-  height: 170px;
+  height: 178px;   /* pehle 170px */
   overflow: hidden;
   background: #e9e6df;
 }
@@ -422,7 +422,7 @@
   }
 
   .fp-img {
-    height: 210px;
+    height: 218px;   /* pehle 210px */
   }
 }
 
