@@ -105,7 +105,7 @@ export default function VideoTestimonials({ items = videoTestimonials, viewAllLi
         <div className="fw-medium text-truncate small" style={{ color: "#1f2a24", fontFamily: "Inter, sans-serif" }}>
           {v.name}
         </div>
-        <div className="text-truncate" style={{ fontSize: 11, color: "#8a8a8a", fontFamily: "'Playfair Display', serif" }}>
+        <div className="text-truncate" style={{ fontSize: 12, color: "#8a8a8a", fontFamily: "'Playfair Display', serif" }}>
           {v.subtitle}
         </div>
       </div>
