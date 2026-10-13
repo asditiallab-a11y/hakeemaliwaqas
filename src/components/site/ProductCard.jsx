@@ -37,28 +37,28 @@ export default function ProductCard({ product, whatsappNumber }) {
       <div className="p-3">
         <h3
           className="fw-bold mb-2"
-          style={{ fontFamily: "'Playfair Display', serif", fontSize: 15, color: "#1f2a24" }}
+          style={{ fontFamily: "'Playfair Display', serif", fontSize: 14, color: "#1f2a24" }}
         >
           {product.name}
         </h3>
 
-        {String(product.link || "").startsWith("/") ? (
-          <Link
-            to={product.link}
-            className="d-inline-block mb-3 text-decoration-none small"
-            style={{ color: GOLD, fontFamily: "Inter, sans-serif" }}
-          >
-            View Details →
-          </Link>
-        ) : (
-          <a
-            href={product.link}
-            className="d-inline-block mb-3 text-decoration-none small"
-            style={{ color: GOLD, fontFamily: "Inter, sans-serif" }}
-          >
-            View Details →
-          </a>
-        )}
+{String(product.link || "").startsWith("/") ? (
+  <Link
+    to={product.link}
+    className="d-inline-block mb-3 text-decoration-none"
+    style={{ color: GOLD, fontFamily: "Inter, sans-serif", fontSize: 11 }}
+  >
+    View Details →
+  </Link>
+) : (
+  <a
+    href={product.link}
+    className="d-inline-block mb-3 text-decoration-none"
+    style={{ color: GOLD, fontFamily: "Inter, sans-serif", fontSize: 11 }}
+  >
+    View Details →
+  </a>
+)}
 
         <a
           href={buyLink}
