@@ -79,8 +79,8 @@ export default function TestimonialSlider({
       <div className="container">
         <SectionHeading label={label} title={title} subtitle={subtitle} />
 
-        {/* Arrows (top right) */}
-        <div className="d-flex justify-content-end gap-2 mb-3">
+        {/* Arrows (center) */}
+        <div className="d-flex justify-content-center gap-2 mb-3">
           <button
             type="button" aria-label="Previous" onClick={prev} disabled={index === 0}
             className="btn rounded-circle d-flex align-items-center justify-content-center p-0"
