@@ -2048,3 +2048,37 @@
     height: 256px;
   }
 }
+
+
+/* ===== About / Natural section (.ab-) : reference design jaisa ===== */
+
+/* Text screen ke left edge se na chipke: side padding */
+.ab-section .ab-container {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Learn More button: thora compact (height ~41px) */
+.ab-section .ab-btn {
+  padding: 9px 20px;
+}
+
+/* Stats boxes: halka transparent, saaf white border, rounded */
+.ab-section .ab-stat {
+  min-height: 110px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* Tablet (768-991px): heading thori chhoti, stats left content se door */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .ab-section .ab-heading {
+    font-size: 2.2rem;
+  }
+  .ab-section .ab-right {
+    margin-top: 64px !important;
+  }
+}
