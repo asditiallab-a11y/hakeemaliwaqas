@@ -55,7 +55,7 @@ function InfoItem({ icon, label, children }) {
         {icon}
       </div>
       <div style={{ fontFamily: "Inter, sans-serif", fontSize: 14, color: DARK }}>
-        <div className="text-uppercase text-secondary mb-1" style={{ fontSize: 11, letterSpacing: ".5px" }}>
+        <div className="text-uppercase text-secondary mb-1" style={{ fontSize: 12, letterSpacing: ".5px" }}>
           {label}
         </div>
         {children}
@@ -217,7 +217,7 @@ export default function Contact() {
               <p className="text-uppercase small mb-2" style={{ color: GOLD, letterSpacing: "4px", fontFamily: "Jost, sans-serif" }}>
                 {field(page, "ciLabel", "Contact Information")}
               </p>
-              <h2 className="fw-bold mb-4" style={{ fontFamily: "'Playfair Display', serif", fontSize: 26, color: DARK }}>
+              <h2 className="fw-bold mb-4" style={{ fontFamily: "'Playfair Display', serif", fontSize: 30, color: DARK }}>
                 {field(page, "ciHeading", "Visit Our Clinic")}
               </h2>
 
