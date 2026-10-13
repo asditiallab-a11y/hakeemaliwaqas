@@ -473,7 +473,7 @@
   display: flex;
   gap: 3px;
   width: 100%;
-  height: 425px;
+  height: 430px;   /* pehle 425px */
   background: #4e4a40; /* panels ke beech ki patli line */
 }
 
@@ -588,7 +588,7 @@
   }
 
   .art-panels {
-    height: 360px;
+    height: 365px;   /* pehle 360px */
   }
 
   .art-label {
@@ -628,7 +628,7 @@
 
   .art-panel {
     flex: none;
-    height: 230px;
+    height: 235px;   /* pehle 230px */
   }
 
   .art-label {
