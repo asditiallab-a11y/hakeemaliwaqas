@@ -102,7 +102,7 @@ function AppointmentForm() {
     setCaptcha(makeCaptcha());
   };
 
-  const label = { fontFamily: "Inter, sans-serif", fontSize: 13, fontWeight: 500, color: DARK };
+  const label = { fontFamily: "Inter, sans-serif", fontSize: 14, fontWeight: 500, color: DARK };
   const input = { background: "#faf9f7", border: `1px solid ${CARD_BORDER}`, fontSize: 13, fontFamily: "'Playfair Display', serif", borderRadius: 4 };
 
   return (
@@ -111,10 +111,10 @@ function AppointmentForm() {
       className="p-4 rounded-3 h-100"
       style={{ background: CARD_BG, border: `1px solid ${CARD_BORDER}`, boxShadow: "0 2px 6px rgba(0,0,0,.08)" }}
     >
-      <h3 className="fw-bold mb-1" style={{ fontFamily: "'Playfair Display', serif", fontSize: 22, color: DARK }}>
+      <h3 className="fw-bold mb-1" style={{ fontFamily: "'Playfair Display', serif", fontSize: 24, color: DARK }}>
         Book an Appointment
       </h3>
-      <p className="text-secondary mb-4" style={{ fontFamily: "Inter, sans-serif", fontSize: 13 }}>
+      <p className="text-secondary mb-4" style={{ fontFamily: "Inter, sans-serif", fontSize: 14 }}>
         Fill out the form below and we will get back to you as soon as possible.
       </p>
 
