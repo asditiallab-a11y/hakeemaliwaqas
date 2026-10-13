@@ -75,7 +75,7 @@ export default function VideoTestimonials({ items = videoTestimonials, viewAllLi
     return (
       <div
         key={v.id}
-        className="text-center d-block mx-auto"
+        className="text-center d-block"
         style={{ width: CARD_WIDTH, maxWidth: "100%" }}
       >
         {isPlaying ? (
