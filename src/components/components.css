@@ -2020,3 +2020,15 @@
     animation: none;
   }
 }
+
+
+/* ===== Featured product image container: +8px (override) ===== */
+.fp-section .fp-card .fp-img {
+  height: 178px !important;
+}
+
+@media (max-width: 575px) {
+  .fp-section .fp-card .fp-img {
+    height: 218px !important;
+  }
+}
