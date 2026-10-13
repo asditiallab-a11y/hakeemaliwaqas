@@ -217,26 +217,19 @@ export default function VideoCollection({
             const active = tab === t.key;
             return (
               <button
-                key={t.key}
-                type="button"
-                onClick={() => setTab(t.key)}
-                className="btn rounded-pill px-4 py-2 d-flex align-items-center gap-2 small"
-                style={{
-                  fontFamily: "Inter, sans-serif",
-                  background: active ? GOLD : "#fff",
-                  color: active ? "#fff" : "#6c757d",
-                  border: `1px solid ${active ? GOLD : "#dcdcdc"}`,
-                  boxShadow: active ? "0 2px 6px rgba(212,160,23,.4)" : "none",
-                }}
-              >
-                {t.label}
-                <span
-                  className="rounded-pill px-2"
-                  style={{ fontSize: 11, background: active ? "rgba(255,255,255,.3)" : "#ececec", color: active ? "#fff" : "#6c757d" }}
-                >
-                  {t.count}
-                </span>
-              </button>
+  key={t.key}
+  type="button"
+  onClick={() => setTab(t.key)}
+  className="btn rounded-pill px-4 py-2 d-flex align-items-center gap-2"
+  style={{
+    fontFamily: "Inter, sans-serif",
+    fontSize: 14,                    // NEW
+    background: active ? GOLD : "#fff",
+    color: active ? "#fff" : "#6c757d",
+    border: `1px solid ${active ? GOLD : "#dcdcdc"}`,
+    boxShadow: active ? "0 2px 6px rgba(212,160,23,.4)" : "none",
+  }}
+>
             );
           })}
         </div>
