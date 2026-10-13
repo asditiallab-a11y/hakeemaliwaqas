@@ -124,7 +124,7 @@ function AppointmentForm() {
           Security Check
         </div>
         <div className="d-flex align-items-center gap-3 mb-2">
-          <span className="fw-bold" style={{ fontFamily: "Inter, sans-serif", fontSize: 14 }}>
+          <span className="fw-bold" style={{ fontFamily: "Inter, sans-serif", fontSize: 15 }}>
             {captcha.a} + {captcha.b} = ?
           </span>
           <input
@@ -134,7 +134,7 @@ function AppointmentForm() {
             placeholder="Answer"
             required
             className="form-control"
-            style={{ ...input, width: 80, fontFamily: "Inter, sans-serif" }}
+            style={{ ...input, width: 95, fontFamily: "Inter, sans-serif", fontSize:14}}
           />
         </div>
         <small className="text-secondary" style={{ fontFamily: "Inter, sans-serif", fontSize: 11 }}>
